@@ -29,11 +29,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ArrayList<String> users;
+        ArrayList<User> users;
         users= new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {
-            users.add("Varun " + i);
+            User user= new User("Varun Sonava","10/10/1998","9555053000");
+            users.add(user);
             
         }
 
