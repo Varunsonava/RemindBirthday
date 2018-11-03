@@ -35,7 +35,7 @@ public class CreateUser extends AppCompatActivity {
 
                 User user=new User(name.getText().toString(),dob.getText().toString(),contact.getText().toString());
                 db.userDao().insertAll(user);
-                startActivity(new Intent(CreateUser.this,MainActivity.class));
+                startActivity(new Intent(CreateUser.this,MainActivity.class)); 
             }
         });
     }
