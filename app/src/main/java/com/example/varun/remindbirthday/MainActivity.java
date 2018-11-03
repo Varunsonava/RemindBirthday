@@ -1,5 +1,6 @@
 package com.example.varun.remindbirthday;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,14 +31,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ArrayList<User> users;
-        users= new ArrayList<>();
+//        ArrayList<User> users;
+//        users= new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
-            User user= new User("Varun Sonava","10/10/1998","9555053000");
-            users.add(user);
-            
-        }
+//        for (int i = 0; i < 100; i++) {
+    //        User user= new User("Varun Sonava","10/10/1998","9555053000");
+  //          users.add(user);
+    //    }
+
+        AppDatabase db= Room.databaseBuilder(getApplicationContext(),AppDatabase.class,"production")
+                .allowMainThreadQueries()
+                .build();
+
+        List<User> users = db.userDao().getAllUsers();
 
         fab=findViewById(R.id.fab);
         recyclerView=findViewById(R.id.recyclerview);
